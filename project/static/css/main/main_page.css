@@ -310,8 +310,19 @@
         transform: scale(1);
     }
     100% {
-        color: purple;
-        transform: scale(1);
+        color: var(--point-main, #5E0080);
+        font-family: Pretendard;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: 20px; /* 142.857% */
+        letter-spacing: -1px;
+        text-decoration-line: underline;
+        text-decoration-style: solid;
+        text-decoration-skip-ink: none;
+        text-decoration-thickness: auto;
+        text-underline-offset: auto;
+        text-underline-position: from-font;
     }
 }
 
