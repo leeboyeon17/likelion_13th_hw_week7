@@ -1,1 +1,320 @@
 /* main page - CSS */
+
+/*body * {
+  border: 1px solid black;
+}*/
+
+.page {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-bottom: 72.063px;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.406px;
+}
+
+.Frame {
+    display: flex;
+    width: 1050px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/*태그 영역*/
+.tag-section {
+    display: flex;
+    padding-top: 50px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.tag-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 44.8px 55.9216px;
+    padding: 30px 30px;
+    align-items: center;
+    align-content: flex-start;
+    align-self: stretch;
+    border: 1px solid #E2E2E2;
+}
+
+.list {
+    width: 200.2764px;
+    display: inline-block;
+    white-space: nowrap;
+    color: var(--font-font-1, #333);
+    font-family: Pretendard;
+    font-size: 12.369px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12.813px; /* 142.857% */
+    letter-spacing: -0.641px;
+}
+
+/*본문 영역*/
+.main-content {
+    display: flex;
+    padding-top: 50px;
+    align-items: flex-start;
+    gap: 40.6652px;
+    align-self: stretch;
+}
+
+
+/*1 filter-section*/
+.filter-section {
+    display: flex;
+    width: 230.2764px;
+    height: 212.715px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.filter-header {
+    display: flex;
+    padding-bottom: 18.85px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+    border-bottom: 0.241px solid #E2E2E2;
+}
+
+.header-message-left {
+    color: #333;
+    font-family: Pretendard;
+    font-size: 12.609px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 12.813px;
+}
+
+.header-message-right {
+    color: var(--font-font-3, #DDD);
+    font-family: Pretendard;
+    font-size: 12.609px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12.813px;
+}
+
+.option-bar {
+    display: flex;
+    height: 100%;
+    padding-bottom: 10.85px;
+    align-items: center;
+    gap: 4px;
+}
+
+.option-bar-message {
+    color: #333;
+    font-family: Pretendard;
+    font-size: 12.369px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 12.091px;
+}
+
+.option-bar-number {
+    color: #DDD;
+    font-family: Pretendard;
+    font-size: 10.888px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 9.85px;
+}
+
+
+.sortingBar-message {
+    color: #333;
+    font-family: Pretendard;
+    font-size: 12.609px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 12.813px;
+}
+
+.sortingBar-message-gray {
+    color: #999;
+    font-family: Pretendard;
+    font-size: 12.609px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 12.813px;
+}
+
+.filter-title {
+    display: flex;
+    height: 56.55px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+    color: #333;
+    font-family: Pretendard;
+    font-size: 12.609px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 12.813px;
+}
+
+.filter-options {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/*2 product-list*/
+.product-list {
+    display: flex;
+    height: 480px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 0 0;
+}
+
+.SortingBar {
+    display: flex;
+    padding-bottom: 13px;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-self: stretch;
+}
+
+.productBar {
+    display: flex;
+    height: 100%;
+    padding-top: 22px;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 96px 13px;
+    align-self: stretch;
+    flex-wrap: wrap;
+}
+
+.product-card {
+    display: flex;
+    height: 100%;
+    width: 240px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+}
+
+.product-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* 잘려도 비율 유지 */
+  display: block;
+}
+
+.inner-rectangle {
+    width: 100%;
+    height: 260px;
+    border: 1px solid #E2E2E2;
+}
+
+.inner-shop {
+    display: flex;
+    width: 100%;
+    height: 24.663px;
+    justify-content: center;
+    align-items: center;
+    gap: 0.963px;
+    align-self: stretch;
+    border: 1px solid #E2E2E2;
+    color: var(--font-font-1, #333);
+    font-family: Pretendard;
+    font-size: 13.85px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 15.775px;
+}
+
+.inner-info {
+    display: flex;
+    padding: 1.925px 2.406px 0px 0px;
+    flex-direction: column;
+    align-items: flex-start;
+    align-self: stretch;
+    gap: 3.5px;
+}
+
+.company {
+    color: #999;
+    font-family: Pretendard;
+    font-size: 11px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 15.813px;
+    letter-spacing: -0.241px;
+}
+
+.name {
+    flex: 1 0 0;
+    color:#333;
+    font-family: Pretendard;
+    font-size: 13.85px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 17.775px;
+}
+
+.description {
+    flex: 1 0 0;
+    color: #999;
+    font-family: Pretendard;
+    font-size: 8.888px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 10.85px;
+}
+
+.origin_price {
+    color: #999;
+    font-family: Pretendard;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 17.775px;
+    text-decoration-line: line-through;
+}
+
+.discount {
+    color: #FA622F;
+    font-family: Pretendard;
+    font-size: 12.85px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 17.775px;
+}
+
+.discount_price {
+    color: #333;
+    font-family: Pretendard;
+    font-size: 12.85px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: 17.775px;
+}
+
+/*Animation.css*/
+
+
+@keyframes hoverEffect {
+    0% {
+        color: initial;
+        transform: scale(1);
+    }
+    100% {
+        color: purple;
+        transform: scale(1);
+    }
+}
+
+.list:hover {
+    animation: hoverEffect 0.3s ease-in-out forwards;
+}

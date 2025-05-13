@@ -4,7 +4,7 @@ from .models import Product, ProductComment
 # Create your views here.
 # 메인페이지와 메인페이지의 products 정보들을 불러오는 함수
 def mainpage(request):
-    products = Product.objects.all()
+    products = Product.objects.all()[:3]
     return render(request, 'main/mainpage.html', {'products': products})
 
 # 상품의 상세페이지를 불러오는 함수

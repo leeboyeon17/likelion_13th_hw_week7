@@ -6,26 +6,81 @@
   href="{% static 'css/main/main_page.css'%}"
 />
 
-<!-- 코드 작성시, 아래 부분(script 태그 이전)은 전체 삭제하고 작성하세요 -->
 
-<!----------------tip!---------------->
-<!-- 상품 데이터베이스는 프로젝트에 넣어뒀어요 -->
-<!-- 아래와 같은 형식으로 for문을 사용하여 작성하세요 -->
+<div class="page">
+  <div class="Frame">
+    <!--태그 영역-->
+      <section class="tag-section">
+        <div class="tag-list">
+          <span class="list">인기신상랭킹</span>
+          <span class="list">입점특가</span>
+          <span class="list">간편한끼</span>
+          <span class="list">요즘간식</span>
+          <span class="list">주방·리빙</span>
+          <span class="list">뷰티</span>
+          <span class="list">패션·잡화</span>
+        </div>
+      </section>
 
-<!-- 데이터 사용 예시 -->
-<div style="display: flex">
-  {% for product in products %}
-  <a href="product/{{product.id}}">
-    <img src="{{product.image_url}}" style="width: 100px" />
-    <p>{{product}}</p>
-    <p>{{product.description}}</p>
-    <p>{{product.origin_price}}원</p>
-    <p>{{product.discount_rate}}%</p>
-    <p>{{product.discount_price}}원</p>
-  </a>
-  {% endfor %}
+      <!--본문 영역-->
+      <main class="main-content">
+        <section class="filter-section">
+          <div class="filter-header">
+            <span class="header-message-left">필터</span>
+            <span class="header-message-right"><img src="{% static 'assets/icons/reset.svg' %}" height="12" width="12"/>초기화</span>
+          </div>
+          <div class="filter-title">
+            카테고리
+            <a class="up" href="/"><img src="{% static 'assets/icons/up.svg' %}" /></a>
+          </div>
+          <div class="filter-options">
+            <div class="option-bar">
+              <a class="right" href="/"><img src="{% static 'assets/icons/right.svg' %}" /></a>
+              <span class="option-bar-message">스킨케어·메이크업</span>
+              <span class="option-bar-number">68</span>
+            </div>
+            <div class="option-bar">
+              <a class="right" href="/"><img src="{% static 'assets/icons/right.svg' %}" /></a>
+              <span class="option-bar-message">럭셔리뷰티</span>
+              <span class="option-bar-number">40</span>
+            </div>
+            <div class="option-bar">
+              <a class="right" href="/"><img src="{% static 'assets/icons/right.svg' %}" /></a>
+              <span class="option-bar-message">간식·과자·떡</span>
+              <span class="option-bar-number">28</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="product-list">
+          <div class="SortingBar">
+            <span class="sortingBar-message">총 508건</span>
+            <spans class="sortingBar-message-gray"><span class="sortingBar-message">추천순</span> │ 산성품순 │ 판매량순 │ 혜택순 │ 낮은 가격순 │ 높은 가격순</span>
+          </div>
+          <div class="productBar">
+            {% for product in products %}
+            <div class="product-card">
+              <div class="inner-rectangle">
+                <img src="{% static 'assets/images/banana.png' %}" alt="banana" class="product-image">
+              </div>
+              <div class="inner-shop">
+                <img src="{% static 'assets/icons/cart.svg' %}" />담기
+              </div>
+              <div class="inner-info">
+                <div class="company">샛별배송</div>
+                <div class="name">{{ product.name }}</div>
+                <div class="description">{{ product.description }}</div>
+                <div class="origin_price">{{ product.origin_price }} 원</div>
+                <span><span class="discount">{{ product.discount_rate }} %      </span><span class="discount_price">{{ product.discount_price }} 원</span></span>
+              </div>
+            </div>
+            {% endfor %}
+          </div>
+        </section>
+      </main>
+  </div>
 </div>
-<!-- 데이터 사용 예시 -->
+
 
 <!-- js 파일 -->
 <script src="{% static 'js/main/main_page.js'%}"></script>
