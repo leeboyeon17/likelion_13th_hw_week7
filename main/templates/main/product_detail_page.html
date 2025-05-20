@@ -5,19 +5,61 @@
   href="{% static 'css/main/product_detail_page.css'%}"
 />
 
-<!-- 코드 작성시, 아래 부분(endblock 이전)은 전체 삭제하고 작성하세요 -->
+<div class="page">
+  <div class="detail-page">
 
-<!----------------tip!---------------->
-<!-- 상품 데이터베이스는 프로젝트에 넣어뒀어요 -->
-<!-- 아래와 같은 형식으로 사용하세요 -->
+    <section class="image-section">
+      <img src="{% static 'assets/images/banana.png' %}" alt="banana" class="detail-image">
+    </section>
 
-<!-- 데이터 사용 예시 -->
+    <section class="text-section">
+      <div class="upper-contents">
+        <div class="detail-container">
+          <div class="company">샛별배송</div><br>
+          <div class="name">{{ product.name }}</div><br>
+          <span><span class="discount">{{ product.discount_rate }} %      </span><span class="discount_price" id="unitPrice" data-price="{{ product.discount_price }}">{{ product.discount_price }} 원</span></span>
+        </div>
+        <div class="info-container">
+          <span class="info-title">안내사항</span>
+          <span class="info-description">{{ product.notice }}</span>
+        </div>
+        <div class="info-container">
+          <span class="info-title">상품 선택</span>
+          <span class="calculate-box">
+            <div class="calculate-name">{{ product.name }}</div>
+            <div class="calculate-number">
+              <a id="lower">-</a>
+              <a id="quantity">0</a>
+              <a id="upper">+</a>
+            </div>
+          </span>
+        </div>
+      </div>
+      <div class="lower-contents">
+        <div class="totalPrice-container">
+          <div class="totalPrice">
+            <a id="price-title">총 상품 금액</a>
+            <a id="price">0원</a>
+          </div>
+        </div>
+        <div class="sign_in-content">로그인</div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+
+<!--js 파일-->
+<script src="{% static 'js/main/product_detail_page.js'%}"></script>
+{% endblock %}
+
+
+<!--------------------------------------------------------->
+<!-- 데이터 사용 예시
 <img src="{{product.image_url}}" style="width: 100px" />
 <p>{{product.name}}</p>
 <p>{{product.discount_rate}}%</p>
 <p>{{product.discount_price}} 원</p>
 <p>{{product.notice}}</p>
-<!-- 데이터 사용 예시 -->
-
-<script src="{% static 'js/main/product_detail_page.js'%}"></script>
-{% endblock %}
+ 데이터 사용 예시 -->
