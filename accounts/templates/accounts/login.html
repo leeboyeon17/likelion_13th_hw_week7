@@ -1,6 +1,88 @@
 <!-- 임시 로그인 페이지 -->
-{% extends 'base.html' %} {% block content %}
-<div class="container">
-  <h2>로그인</h2>
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/login.css' %}"
+/>
+
+<div class="page">
+  <div class="login-page">
+    <div class="login-section">
+      <h1>로그인</h1>
+
+        <!--form 마저 만들기!!! for,type,name 속성값 수정 필요-->
+        <!--name 속성값이 있어야 Django에서 request.POST['']로 해당 값을 받아올 수 있음
+            name은 form 데이터를 백엔드로 전송할 때의 key 값이고, 서버에서는 request.POST['name값']으로 접근함-->
+      <form action="{% url 'accounts:login' %}" method="post">
+          {% csrf_token %}
+        <div class="input-container">
+          <input id="username" type="text" name="username" class="login_input" placeholder="아이디를 입력해주세요"/>   
+          <input id="password" type="password" name="password" class="login_input" placeholder="비밀번호를 입력해주세요"/>
+          {% if error %}
+          <p class="error-message" style="color:red;">{{ error }}</p><!--처음부터 에러 메세지..?-->
+          {% endif %}
+          <div class="find">아이디 찾기 | 비밀번호 찾기</div>
+        </div>
+
+        <!--로그인 성공 시 main으로 이동!! url 수정 필요??함-->
+        <!--url 수정하는게 아니라 views.py에 정의되어있는 함수가 작동되면 main으로 이동할 수 있음-->
+        <button id="login-button" type="submit" class="login-button" disabled>로그인</button>
+      </form>
+    </div>
+
+      <!--그냥 버튼 이동이니까 a태그에 url 추가-->
+      <a class="signup-button" href="{% url 'accounts:signup' %}">회원가입</a>
+  </div>
 </div>
+
+
+<!--틀린거
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+      const loginBtn = document.getElementsByClassName('login-button')
+      const text_area = document.getElementById('text_area')
+  
+      text_area.addEventListener("input", (event) => {
+    
+
+      // button_click.disabled = true //disabled 활성화
+        loginBtn.disabled = false; //disabled 비활성화	
+        loginBtn.style.backgroundColor = "#5E0080";
+    	})
+});
+</script>-->
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const idInput = document.getElementById("username");
+    const pwInput = document.getElementById("password");
+    const loginBtn = document.querySelector(".login-button");
+
+    function toggleLoginButton() {
+      if (idInput.value.trim() && pwInput.value.trim()) {
+        //disabled를 꼭 false 해줘야 버튼이 정상 작동됨!!!(활성화되어야 데이터도 전송됨)
+        loginBtn.disabled = false;
+        loginBtn.style.backgroundColor = "#5E0080";
+        loginBtn.style.color = "#fff";
+        loginBtn.style.cursor = "pointer";
+        loginBtn.classList.add("active"); // .active에 대한 css를 추가해줌
+      } else {
+        loginBtn.disabled = true;
+        loginBtn.style.backgroundColor = "#e2e2e2";
+        loginBtn.style.color = "#999";
+        loginBtn.style.cursor = "default";
+        loginBtn.classList.remove("active");
+      }
+    }
+
+    idInput.addEventListener("input", toggleLoginButton);
+    pwInput.addEventListener("input", toggleLoginButton);
+  });
+</script>
+
+
+
 {% endblock %}

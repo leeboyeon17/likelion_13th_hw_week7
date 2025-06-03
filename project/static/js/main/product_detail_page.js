@@ -40,7 +40,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // 초기 총 가격 설정
   updateTotalPrice();
-
-
   
 });
+

@@ -17,40 +17,127 @@
         <div class="detail-container">
           <div class="company">샛별배송</div><br>
           <div class="name">{{ product.name }}</div><br>
-          <span><span class="discount">{{ product.discount_rate }} %      </span><span class="discount_price" id="unitPrice" data-price="{{ product.discount_price }}">{{ product.discount_price }} 원</span></span>
+          <div><span class="discount">{{ product.discount_rate }} %      </span> <span class="discount_price" id="unitPrice" data-price="{{ product.discount_price }}">{{ product.discount_price }} 원</span></div>
         </div>
         <div class="info-container">
           <span class="info-title">안내사항</span>
           <span class="info-description">{{ product.notice }}</span>
         </div>
         <div class="info-container">
-          <span class="info-title">상품 선택</span>
-          <span class="calculate-box">
+          <div class="info-title">상품 선택</div>
+          <div class="calculate-box">
             <div class="calculate-name">{{ product.name }}</div>
             <div class="calculate-number">
-              <a id="lower">-</a>
-              <a id="quantity">0</a>
-              <a id="upper">+</a>
+              <button id="lower" class="calculate-button">-</button>
+              <div id="quantity">0</div>
+              <button id="upper" class="calculate-button">+</button>
             </div>
-          </span>
+          </div>
         </div>
       </div>
       <div class="lower-contents">
         <div class="totalPrice-container">
           <div class="totalPrice">
-            <a id="price-title">총 상품 금액</a>
-            <a id="price">0원</a>
+            <p id="price-title">총 상품 금액</p>
+            <p id="price">0원</p>
           </div>
         </div>
-        <div class="sign_in-content">로그인</div>
+        <a href="{% url 'accounts:login' %}" class="sign_in-content">로그인</a>
       </div>
-
     </section>
+  </div>
+</div>
+
+<style>
+
+</style>
+
+<!--FE 5주차 세션_로그인페이지 만들기-->
+<div class="screen">
+  <div
+    style="
+      width: 1050px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 20px 0px;
+      border: 1px solid black;
+    "
+  >
+  
+<!-- 여기에 후기를 작성하는 폼을 만들어주세요! -->
+ <form action="create_comment/" method="post" class="form-review" >
+  {% csrf_token %}
+    <div class="review">
+        <label for="review">상품후기</label>
+        <input id="text_area" type="textarea" name="content">
+          <input id="button_click" type="submit" value="등록" disabled>
+    </div>
+    <select name="star">
+      <option value="별점">별점</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+    </select>
+</form>
+  
+    {% for comment in comments %}
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 20px 8px;
+        border-bottom: solid 1px #d9d9d9;
+      "
+    >
+      <div style="display: flex; justify-content: space-between">
+        <p>평점:{{comment.star}}</p>
+        <a href="{% url 'main:delete_comment' comment.id %}">삭제</a>
+      </div>
+      <p class="B1">{{comment.content}}</p>
+    </div>
+
+    
+    {% endfor%}
   </div>
 </div>
 
 
 <!--js 파일-->
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+      console.log('이거까진 된다')
+      const button_click = document.getElementById('button_click')
+      const text_area = document.getElementById('text_area')
+  
+      text_area.addEventListener("input", (event) => {
+    
+
+      // button_click.disabled = true //활성화
+        button_click.disabled = false; //비활성화	
+        button_click.style.backgroundColor = "#dddddd";
+    	})
+});
+</script>
+
+<!-- 비교  <script>
+	document.addEventListener("DOMContentLoaded", function () {
+		const button_click=document.getElementById("button_click")
+	  const text_area=document.getElementById("text_area")
+		
+	  text_area.addEventListener("input", (event) => {
+
+	        button_click.disabled = false;
+	        button_click.style.backgroundColor = "#dddddd";
+	  
+		});
+	});
+</script> -->
+
+
+
+
 <script src="{% static 'js/main/product_detail_page.js'%}"></script>
 {% endblock %}
 

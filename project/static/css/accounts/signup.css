@@ -1,1 +1,175 @@
 /* signup page - CSS */
+
+/*body * {
+  border: 1px solid black;
+}*/
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 72.063px;
+  align-items: center;
+  gap: 2.406px;
+}
+
+.signup-page {
+  display: flex;
+  flex-direction: column;
+  width: 1050px;
+  height: 754px;
+  align-items: center;
+  padding-top: 50px;
+  gap: 50px;
+  justify-content: center;
+}
+
+/*input-section*/
+.input-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 640px;
+}
+
+.input-title {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 32px;
+  width: 100%;
+
+  color: #000;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 114.286% */
+  letter-spacing: -1px;
+}
+
+.input-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 32px 0px;
+  margin-bottom: 32px;
+  border-top: 1px solid black;
+}
+
+.input-container {
+  display: flex;
+  padding: 10px 20px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+}
+
+.signup_label {
+  color: #000;
+  /* B2-bold */
+  font-family: Pretendard;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 20px; /* 142.857% */
+  letter-spacing: -1px;
+}
+
+.signup_input {
+  display: flex;
+  width: 450px;
+  height: 46px;
+  padding: 0px 1px 0px 11px;
+  align-items: center;
+  gap: 10px;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid var(--stroke-stroke-1, #ccc);
+}
+
+.text-container {
+  display: flex;
+  padding: 0px 20px;
+  justify-content: flex-end;
+  align-items: center;
+  align-self: stretch;
+}
+
+.text-container p {
+  height: 20px;
+} /*error 문자 때문에 높이 차이? 발생 방지용임*/
+
+#active-condition {
+  width: 461px;
+  padding-bottom: 10px;
+  color: #999;
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+#password-error {
+  width: 461px;
+  color: var(--point-red, #fa622f);
+  /* Caption */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+/*submit-button*/
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin-top: 12px;
+  padding: 32px 0px;
+  border-top: 1px solid #e2e2e2;
+}
+
+.signup-button {
+  display: flex;
+  width: 240px;
+  padding: 16px 0px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--stroke-stroke-2, #e2e2e2);
+
+  color: var(--font-font2, #999);
+  text-align: center;
+
+  /* Btn */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+.active {
+  display: flex;
+  width: 240px;
+  padding: 16px 0px;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  text-align: center;
+
+  /* Btn */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+  border-radius: 4px;
+  background: var(--point-main, #5e0080);
+}

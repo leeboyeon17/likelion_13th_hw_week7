@@ -1,6 +1,157 @@
 <!-- 임시 회원가입 페이지 -->
-{% extends 'base.html' %} {% block content %}
-<div class="container">
-  <h2>회원가입</h2>
+{% extends 'base.html' %} {% block content %} {% load static %}
+
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{% static 'css/accounts/signup.css' %}"
+/>
+
+<div class="page">
+  <div class="signup-page">
+    <div class="input-section">
+      <div class="input-title">회원가입</div>
+      <div class="input-list">
+        <!--for,type,name 속성값 수정 필요, action 속성 확인 필-->
+        <!--하나의 form태그 안에 넣어야 함! 회원가입이라는 하나의 흐름이라서-->
+        <!--연결한 action 속성값의 url로 form '데이터'를 전송함!! 이동할 페이지 url을 쓰는게 아님. 실제 페이지 이동은 view와 관련됨(.......??????!!!-->
+        <form action="{% url 'accounts:signup' %}" method="post">
+          {% csrf_token %}
+          <div class="input-container">
+            <label for="username" class="signup_label">아이디</label>
+            <input
+              id="username"
+              type="text"
+              name="username"
+              class="signup_input"
+              placeholder="아이디를 입력해주세요"
+            />
+          </div>
+
+          <div class="input-container">
+            <label for="password" class="signup_label">비밀번호</label>
+            <input
+              id="password"
+              type="password"
+              name="password"
+              class="signup_input"
+              placeholder="비밀번호를 입력해주세요"
+            />
+          </div>
+
+          <div class="text-container">
+            <ul id="active-condition">
+              <li>· 비밀번호를 8자 이상으로 작성해주세요.</li>
+              <li>· 영문 대소문자, 숫자, 특수문자를 하나 이상 포함해주세요.</li>
+              <li>· 사용가능 특수문자 @ ! ? - _</li>
+            </ul>
+          </div>
+
+          <div class="input-container">
+            <label for="password2" class="signup_label">비밀번호 확인</label>
+            <input
+              id="password2"
+              type="password"
+              name="password2"
+              class="signup_input"
+              placeholder="비밀번호를 한번 더 입력해주세요"
+            />
+          </div>
+
+          <!--정렬..맞추고 싶다... + class명 확인 + div로 안 감싸도 되나?-->
+          <div class="text-container"><p id="password-error"></p></div>
+
+          <!--button이 이 form 태그 안에 있어야 해서...-->
+          <!--!!가입하기 활성화/url 작업하기-->
+          <!--가입하기 누르면 어디로 가나요?:views.py에 정의되어 있음-->
+          <div class="button-container">
+            <button id="signup-button" type="submit" class="signup-button" disabled>가입하기</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+<!--js코드!!!-->
+<script>
+  document.addEventListener("DOMContentLoaded", function () { //HTML이 로드된 후 JS 실행
+    
+    //1. 아이디, 비번 필드를 채웠을 때 signupBtn 활성화하는 함수를 정의 (toggleSignupButton())
+    const idInput = document.getElementById("username");
+    const pwInput = document.getElementById("password");
+    const signupBtn = document.querySelector(".signup-button");
+
+    function toggleSignupButton() {
+      if (idInput.value.trim() && pwInput.value.trim()) {
+        signupBtn.disabled = false;
+        //signupBtn.style.backgroundColor = "#5E0080";
+        //signupBtn.style.color = "#fff";
+        //signupBtn.style.cursor = "pointer";
+        signupBtn.classList.add("active"); // 선택적
+      } else {
+        //signupBtn.style.backgroundColor = "#e2e2e2";
+        //signupBtn.style.color = "#999";
+        //signupBtn.style.cursor = "default";
+        signupBtn.classList.remove("active");
+      }
+    }
+    //toggleSignupButton 실행
+    idInput.addEventListener("input", toggleSignupButton);
+    pwInput.addEventListener("input", toggleSignupButton);
+
+
+
+    //2. 비밀번호가 조건 만족 + 비밀번호 확인 필드의 값이 비밀번호와 일치할 때 signupBtn 활성화하는 함수를 정의 (validate())
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const confirmInput = document.getElementById("password2");
+    const errorMsg = document.getElementById("password-error");
+
+    //비밀번호 조건 만족 여부 검사
+    function isPasswordValid(pw) {
+      const lengthCheck = pw.length >= 8; //8자 이상인지
+      const upperCheck = /[A-Z]/.test(pw); //대문자 하나 이상 있는지
+      const lowerCheck = /[a-z]/.test(pw); //소문자 하나 이상 있는지
+      const numberCheck = /[0-9]/.test(pw); //숫자 하나 이상 있는지
+      const specialCheck = /[@!?\-_]/.test(pw); //지정한 특수문자 하나 이상 있는지
+      return (
+        lengthCheck && upperCheck && lowerCheck && numberCheck && specialCheck
+      ); //위 조건을 모두 만족하는지 검사함
+    }
+
+    //전체 유효성 검사 함수 정의
+    function validate() {
+      const idVal = usernameInput.value.trim();
+      const pwVal = passwordInput.value;
+      const confirmVal = confirmInput.value;
+
+      const passwordsMatch = pwVal === confirmVal; //비밀번호 입력값 & 비밀번호 확인 입력값이 일치함
+      const passwordValid = isPasswordValid(pwVal); //비밀번호 입력값이 조건을 모두 만족함
+
+      //에러 메세지
+      if (!passwordsMatch && confirmVal.length > 0) {
+        errorMsg.textContent = "비밀번호가 일치하지 않습니다!"; //(비밀번호 확인 필드에 입력이 됐는데 일치하지 않는다면) 해당 메세지 띄움
+      } else {
+        errorMsg.textContent = "";
+      }
+
+      const allValid =
+        idVal && pwVal && confirmVal && passwordsMatch && passwordValid; //지금까지 한 모든 검사가 조건을 만족한 경우를 allValid로 정의함
+
+      signupBtn.disabled = !allValid;
+
+      signupBtn.style.backgroundColor = allValid ? "#5E0080" : "#e2e2e2";
+      signupBtn.style.color = allValid ? "#fff" : "#999";
+      signupBtn.style.cursor = allValid ? "pointer" : "default";
+      
+    }
+    //id,pw,pw2 중 하나라도 '입력'되면 유효성 검사 함수(validate())가 실행됨
+    usernameInput.addEventListener("input", validate);
+    passwordInput.addEventListener("input", validate);
+    confirmInput.addEventListener("input", validate);
+  });
+</script>
+
 {% endblock %}

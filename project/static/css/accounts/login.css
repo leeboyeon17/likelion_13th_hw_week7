@@ -1,1 +1,129 @@
-/* login page - CSS */
+ /* login page - CSS */
+
+/*body * {
+  border: 1px solid black;
+}*/
+
+.page {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 72.063px;
+  align-items: center;
+  gap: 2.406px;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+  width: 1050px;
+  height: 754px;
+  align-items: center;
+  padding-top: 50px;
+  gap: 12px;
+  justify-content: center;
+
+}
+
+/*login-section*/
+.login-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+
+}
+
+.login-section h1 {
+  color: #000;
+  text-align: right;
+  font-family: Pretendard;
+  font-size: 28px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 32px; /* 114.286% */
+  letter-spacing: -1px;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
+.login_input {
+  display: flex;
+  height: 46px;
+  width: 96.5%;
+  padding-left: 11px;
+  align-items: center;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 4px;
+  border: 1px solid var(--stroke-stroke-1, #ccc);
+}
+
+.find {
+  display: flex;
+  width: 340px;
+  padding-top: 32px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 4px;
+
+  color: var(--font-font-1, #333);
+  text-align: right;
+
+  /* Caption */
+  font-family: Pretendard;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 16px; /* 133.333% */
+}
+
+.login-button {
+  display: flex;
+  width: 100%;
+  padding: 16px 0px;
+  margin-top: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  background: var(--stroke-stroke-2, #e2e2e2);
+
+  color: var(--font-font2, #999);
+  text-align: center;
+
+  /* Btn */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
+
+/*signup-button*/
+.signup-button {
+  display: flex;
+  width: 340px;
+  padding: 16px 0px;
+  
+  justify-content: center;
+  align-items: center;
+  border-radius: 4px;
+  border: 1px solid var(--point-main, #5e0080);
+
+  color: var(--point-main, #5e0080);
+  text-align: center;
+
+  /* Btn */
+  font-family: Pretendard;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 24px; /* 150% */
+}
