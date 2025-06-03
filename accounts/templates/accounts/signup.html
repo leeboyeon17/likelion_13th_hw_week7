@@ -61,6 +61,10 @@
           <!--정렬..맞추고 싶다... + class명 확인 + div로 안 감싸도 되나?-->
           <div class="text-container"><p id="password-error"></p></div>
 
+          {% if error %}
+          <p class="error-message" style="color:red;">{{ error }}</p>
+          {% endif %}
+
           <!--button이 이 form 태그 안에 있어야 해서...-->
           <!--!!가입하기 활성화/url 작업하기-->
           <!--가입하기 누르면 어디로 가나요?:views.py에 정의되어 있음-->
